@@ -18,4 +18,5 @@ export default defineNuxtConfig({
   runtimeConfig: {
     apiToken: '',
   },
+  modules: ['nuxt-icon']
 })

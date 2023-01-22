@@ -1,5 +1,15 @@
 <template>
-  <div class="bg-white w-screen min-h-screen flex flex-col items-center">
+  <div
+    class="
+      bg-primary
+      text-white
+      w-screen
+      min-h-screen
+      flex flex-col
+      items-center
+      tracking-wider
+    "
+  >
     <Nav />
     <slot />
   </div>
