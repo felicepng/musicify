@@ -2,9 +2,9 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      title: 'Musicify',
+      title: 'musicify',
       meta: [
-        { name: 'description', content: 'An application for generating song recommendations from genres and artists' }
+        { name: 'description', content: 'An application for generating song recommendations from genres and artists.' }
       ],
     }
   },
@@ -16,7 +16,8 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
-    apiToken: '',
+    clientId: '',
+    clientSecret: '',
   },
   modules: ['nuxt-icon']
 })

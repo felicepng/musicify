@@ -13,15 +13,28 @@
       items-center
     "
   >
-    <div class="font-semibold text-2xl flex gap-x-3 items-center">
-      <Icon name="material-symbols:sound-sensing" size="2rem" />
+    <div
+      class="
+        font-semibold
+        text-xl
+        md:text-2xl
+        flex
+        gap-x-2
+        md:gap-x-3
+        items-center
+      "
+    >
+      <Icon
+        name="material-symbols:sound-sensing"
+        class="w-7 h-7 md:w-8 md:h-8"
+      />
       musicify
     </div>
     <a target="_blank" href="https://felicepng.com">
       <img
         src="~/assets/portfolio.png"
         alt="My Portfolio"
-        class="-mt-0.5 h-[26px] md:h-8 w-[26px] md:w-8"
+        class="h-[26px] md:h-8 w-[26px] md:w-8"
       />
     </a>
   </nav>
