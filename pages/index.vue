@@ -2,9 +2,11 @@
 import { ref } from 'vue';
 
 const query = ref<Record<string, string>>({});
-const url = computed(() => `/api/songRecs?${new URLSearchParams(query.value)}`);
 
-const { data, pending, error } = await useFetch(url, { server: false });
+const { data, pending } = await useFetch('/api/songRecs', {
+  query,
+  server: false,
+});
 
 const onSearch = async (obj: Record<string, string>) => {
   Object.keys(obj).forEach((key) => {
@@ -16,7 +18,6 @@ const onSearch = async (obj: Record<string, string>) => {
 defineExpose({
   data,
   pending,
-  error,
   onSearch,
 });
 </script>
@@ -25,9 +26,14 @@ defineExpose({
   <div class="font-poppins flex flex-col">
     <NuxtLink to="/recents">&gt; to recents</NuxtLink>
     <Form @search="onSearch" />
-    {{ Object.keys(query).length > 0 && pending }}
-    <div v-if="data?.recs?.length">
+
+    <div v-if="Object.keys(query).length === 0" />
+    <div v-else-if="pending">Loading...</div>
+    <div v-else-if="data?.error">Error: {{ data.error.message }}</div>
+    <div v-else-if="data?.recs">
+      <div v-if="data.recs.length === 0">No song recommendations found</div>
       <Result v-for="rec in data.recs" :key="rec.id" v-bind="rec" />
     </div>
+    <div v-else>Error occurred retrieving song recommendations</div>
   </div>
 </template>
