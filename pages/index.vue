@@ -40,7 +40,19 @@ defineExpose({
 </script>
 
 <template>
-  <div class="font-poppins flex flex-col gap-y-9 pt-8 pb-20 px-10">
+  <div
+    class="
+      font-poppins
+      flex flex-col
+      gap-y-7
+      sm:gap-y-9
+      pt-5
+      pb-14
+      sm:pt-8 sm:pb-20
+      px-6
+      lg:px-20
+    "
+  >
     <div class="flex justify-between items-cemter">
       <Search @search="onSearch" :options="genreData.genres" />
       <NuxtLink to="/recents">recents &gt;</NuxtLink>
@@ -52,7 +64,7 @@ defineExpose({
     </div>
     <div v-else-if="data?.recs">
       <div v-if="data.recs.length === 0">no song recommendations found</div>
-      <div v-else class="grid xl:grid-cols-2 gap-x-10 gap-y-9">
+      <div v-else class="grid lg:grid-cols-2 gap-x-10 gap-y-7 sm:gap-y-9">
         <Song
           v-for="rec in data.recs"
           :key="rec.id"

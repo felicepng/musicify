@@ -23,47 +23,84 @@ defineProps({
   <div
     :class="`${
       isActive ? 'bg-translucentBlue' : 'bg-translucent'
-    } rounded-lg py-6 px-8 flex items-center gap-x-8`"
+    } rounded-lg py-4 px-5 sm:py-6 sm:px-8 flex items-center justify-between gap-x-6 sm:gap-x-8`"
   >
-    <a
-      :href="album.url"
-      target="_blank"
-      class="relative flex justify-center items-center"
-    >
-      <img
-        v-show="isActive"
-        src="~/assets/music.gif"
-        class="absolute w-2/3 h-1/2 opacity-90"
-        alt="Music gif"
-      />
-      <img :src="album.image" alt="Album image" class="w-24 h-24 rounded-sm" />
-    </a>
-    <div class="w-72">
+    <div class="flex items-center gap-x-6 sm:gap-x-8">
       <a
-        :href="url"
+        :href="album.url"
         target="_blank"
-        class="text-lg font-medium hover:text-blue-200"
+        class="
+          relative
+          flex
+          justify-center
+          items-center
+          w-16
+          h-16
+          sm:w-24 sm:h-24
+          shrink-0
+          rounded-sm
+        "
       >
-        {{ name }}
+        <img
+          v-show="isActive"
+          src="~/assets/music.gif"
+          class="absolute w-2/3 h-1/2 z-10"
+          alt="Music gif"
+        />
+        <div
+          v-show="isActive"
+          class="absolute bg-black opacity-50 w-full h-full"
+        />
+        <img :src="album.image" alt="Album image" class="w-full h-full" />
       </a>
-      <div class="flex items-center gap-x-2 font-extralight truncate">
+
+      <div class="shrink">
         <a
-          v-for="artist in artists"
-          :key="artist.name"
-          :href="artist.url"
+          :href="url"
           target="_blank"
-          class="hover:text-blue-200"
+          class="flex-wrap text-base sm:text-lg font-medium hover:text-blue-200"
         >
-          {{ artist.name
-          }}{{ artist.name !== artists[artists.length - 1].name ? ',' : '' }}
+          {{ name }}
         </a>
+        <div
+          class="
+            flex flex-wrap
+            text-sm
+            sm:text-base
+            items-center
+            gap-x-2
+            font-extralight
+            truncate
+          "
+        >
+          <a
+            v-for="artist in artists"
+            :key="artist.id"
+            :href="artist.url"
+            target="_blank"
+            class="hover:text-blue-200"
+          >
+            {{ artist.name
+            }}{{ artist.name !== artists[artists.length - 1].name ? ',' : '' }}
+          </a>
+        </div>
+        <p
+          class="
+            flex-wrap
+            mt-2
+            text-xs
+            sm:text-sm
+            uppercase
+            font-extralight
+            opacity-70
+          "
+        >
+          {{ album.name }}
+        </p>
       </div>
-      <p class="mt-2 text-sm uppercase font-extralight truncate">
-        {{ album.name }}
-      </p>
     </div>
 
-    <div v-if="!preview_url" class="tooltip" data-tip="no preview available">
+    <div v-if="!preview_url" class="tooltip" data-tip="no preview">
       <Icon
         name="material-symbols:play-arrow"
         class="w-7 h-7 md:w-8 md:h-8 opacity-20 cursor-not-allowed"

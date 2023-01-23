@@ -1,13 +1,12 @@
 <template>
   <nav
     class="
-      z-10
+      z-20
       top-0
       sticky
       bg-primary
       w-full
-      py-6
-      px-9
+      p-6
       flex
       justify-between
       items-center
@@ -18,16 +17,16 @@
       class="
         font-semibold
         text-xl
-        md:text-2xl
+        sm:text-2xl
         flex
         gap-x-2
-        md:gap-x-3
+        sm:gap-x-3
         items-center
       "
     >
       <Icon
         name="material-symbols:sound-sensing"
-        class="w-7 h-7 md:w-8 md:h-8"
+        class="w-7 h-7 sm:w-8 sm:h-8"
       />
       <h1>musicify</h1>
     </NuxtLink>
@@ -35,7 +34,7 @@
       <img
         src="~/assets/portfolio.png"
         alt="My Portfolio"
-        class="h-[26px] md:h-8 w-[26px] md:w-8"
+        class="h-[26px] sm:h-8 w-[26px] sm:w-8"
       />
     </a>
   </nav>
