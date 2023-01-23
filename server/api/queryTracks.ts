@@ -10,12 +10,14 @@ export default defineEventHandler(async (event) => {
     const creds = await spotifyApi.clientCredentialsGrant();
     spotifyApi.setAccessToken(creds.body.access_token);
 
-    const urlParams = new URLSearchParams(event.node.req.url!.split('?')[1]);
-    const params = Array.from(urlParams)
+    const query = getQuery(event);
+    const params = Object.entries(query)
       .map(
-        ([key, val]) => `${encodeURIComponent(key)}:${encodeURIComponent(val)}`
+        ([key, val]) =>
+          `${encodeURIComponent(key)}:${encodeURIComponent(val as string)}`
       )
       .join(' ');
+
     const res = await spotifyApi.searchTracks(params, { limit: 5 });
 
     return {

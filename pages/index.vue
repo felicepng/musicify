@@ -4,38 +4,39 @@ import { Artist, SearchResult } from '~~/consts/consts';
 const results = ref<SearchResult[]>([]);
 
 const onSearch = async (query: Record<string, string>) => {
-  const params = serialize(query, '=', '&');
-  const res = await $fetch(`/api/queryTracks?${params}`);
+  Object.keys(query).forEach((key) => {
+    !query[key] && delete query[key];
+  });
 
-  if (!res.recs?.length) {
+  const { recs } = await $fetch(`/api/queryTracks`, { query });
+
+  if (!recs?.length) {
     results.value = [];
     return;
   }
 
-  const arr: SearchResult[] = res.recs.map(
-    (rec: SpotifyApi.TrackObjectFull) => {
-      const artists: Artist[] = rec.artists.map(
-        (artist: SpotifyApi.ArtistObjectSimplified) => ({
-          id: artist.id,
-          name: artist.name,
-          url: artist.external_urls.spotify,
-        })
-      );
+  const arr: SearchResult[] = recs.map((rec: SpotifyApi.TrackObjectFull) => {
+    const artists: Artist[] = rec.artists.map(
+      (artist: SpotifyApi.ArtistObjectSimplified) => ({
+        id: artist.id,
+        name: artist.name,
+        url: artist.external_urls.spotify,
+      })
+    );
 
-      return {
-        id: rec.id,
-        name: rec.name,
-        url: rec.external_urls.spotify,
-        preview_url: rec.preview_url,
-        album: {
-          name: rec.album.name,
-          url: rec.album.external_urls.spotify,
-          image: rec.album.images[1].url,
-        },
-        artists,
-      };
-    }
-  );
+    return {
+      id: rec.id,
+      name: rec.name,
+      url: rec.external_urls.spotify,
+      preview_url: rec.preview_url,
+      album: {
+        name: rec.album.name,
+        url: rec.album.external_urls.spotify,
+        image: rec.album.images[1].url,
+      },
+      artists,
+    };
+  });
 
   results.value = arr;
   console.log(arr);
