@@ -94,13 +94,23 @@ defineProps({
         class="w-7 h-7 md:w-8 md:h-8 opacity-20 cursor-not-allowed"
       />
     </button>
-    <button v-else-if="!isActive" @click="songEmit('play', preview_url)">
+    <button
+      v-else-if="!isActive"
+      @click="songEmit('play', preview_url)"
+      class="tooltip"
+      data-tip="play"
+    >
       <Icon
         name="material-symbols:play-arrow"
         class="w-7 h-7 md:w-8 md:h-8 hover:text-blue-200"
       />
     </button>
-    <button v-else @click="songEmit('pause', preview_url)">
+    <button
+      v-else
+      @click="songEmit('pause', preview_url)"
+      class="tooltip"
+      data-tip="pause"
+    >
       <Icon
         name="material-symbols:pause-outline"
         class="w-7 h-7 md:w-8 md:h-8 hover:text-blue-200"

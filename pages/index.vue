@@ -101,7 +101,7 @@ defineExpose({
       </div>
     </div>
 
-    <div v-if="pending" class="mt-20 flex flex-col items-center gap-y-4">
+    <div v-if="pending" class="z-10 mt-20 flex flex-col items-center gap-y-4">
       <p class="text-sm sm:text-base">loading...</p>
       <img
         src="~/assets/music.gif"

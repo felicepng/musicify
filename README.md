@@ -1,35 +1,24 @@
 # musicify
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+An application for generating song recommendations from various genres, built with [Nuxt 3](https://nuxt.com) and [Spotify API](https://developer.spotify.com/documentation/web-api/).
 
-## Setup
+## Set-up
 
-Make sure to install the dependencies:
-
-```bash
-npm install
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
+Create a `.env` file in the root directory and add the following credentials:
 
 ```bash
-npm run dev
+# .env
+NUXT_CLIENT_ID=$CLIENT_ID
+NUXT_CLIENT_SECRET=$CLIENT_SECRET
 ```
 
-## Production
-
-Build the application for production:
+Run the following commands to install required dependencies and start a development server:
 
 ```bash
-npm run build
+$ npm install
+$ npm run dev
 ```
 
-Locally preview production build:
+Open [http://localhost:3000](http://localhost:3000) to view the application in your browser.
 
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Alternatively, the application is deployed with Vercel [here](https://musicify-felicepng.vercel.app).
