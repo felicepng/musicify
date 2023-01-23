@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 
 const genre = ref<string>('acoustic');
+let audio: HTMLVideoElement | null;
 
 const { data: genreData } = await useFetch('/api/genres');
 const { data, pending } = await useFetch('/api/songs', {
@@ -13,11 +14,24 @@ const onSearch = (input: string) => {
   genre.value = input;
 };
 
+const onPlay = (url: string) => {
+  audio?.pause();
+  audio = document.querySelector(`[src="${url}"]`);
+  audio?.play();
+};
+
+const onPause = (url: string) => {
+  audio = document.querySelector(`[src="${url}"]`);
+  audio?.pause();
+};
+
 defineExpose({
   genreData,
   data,
   pending,
   onSearch,
+  onPlay,
+  onPause,
 });
 </script>
 
@@ -32,7 +46,13 @@ defineExpose({
     </div>
     <div v-else-if="data?.recs">
       <div v-if="data.recs.length === 0">No song recommendations found</div>
-      <Song v-for="rec in data.recs" :key="rec.id" v-bind="rec" />
+      <Song
+        v-for="rec in data.recs"
+        :key="rec.id"
+        v-bind="rec"
+        @play="onPlay"
+        @pause="onPause"
+      />
     </div>
     <div v-else>Error occurred retrieving song recommendations</div>
   </div>

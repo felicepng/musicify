@@ -1,15 +1,12 @@
-<script setup>
-let audio;
-
-const onPlay = (url) => {
-  audio = document.querySelector(`[src="${url}"]`);
-  audio.play();
-};
-
-const onPause = (url) => {
-  audio = document.querySelector(`[src="${url}"]`);
-  audio.pause();
-};
+<script setup lang="ts">
+const songEmit = defineEmits({
+  play: (url: string) => {
+    return !!url;
+  },
+  pause: (url: string) => {
+    return !!url;
+  },
+});
 
 defineProps({
   id: String,
@@ -23,7 +20,7 @@ defineProps({
 
 <template>
   <audio :src="preview_url" controls="controls" preload="auto" hidden="true" />
-  <button @click="onPlay(preview_url)">PLAY</button>
-  <button @click="onPause(preview_url)">PAUSE</button>
+  <button @click="songEmit('play', preview_url)">PLAY</button>
+  <button @click="songEmit('pause', preview_url)">PAUSE</button>
   <img :src="album.image" alt="Album image" />
 </template>

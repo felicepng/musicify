@@ -13,7 +13,8 @@
       items-center
     "
   >
-    <div
+    <NuxtLink
+      to="/"
       class="
         font-semibold
         text-xl
@@ -29,7 +30,7 @@
         class="w-7 h-7 md:w-8 md:h-8"
       />
       <h1>musicify</h1>
-    </div>
+    </NuxtLink>
     <a target="_blank" href="https://felicepng.com">
       <img
         src="~/assets/portfolio.png"
