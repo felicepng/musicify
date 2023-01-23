@@ -10,6 +10,7 @@ export default defineNuxtConfig({
             'An application that generates and previews song recommendations from genres, using Nuxt.js and Spotify API.',
         },
       ],
+      link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
     },
   },
   css: ['~/assets/css/main.css'],

@@ -57,18 +57,18 @@ defineExpose({
       items-center
     "
   >
-    <div class="absolute w-screen h-full overflow-hidden">
+    <div class="absolute bg-primary w-screen h-full overflow-hidden">
       <div
         class="
           absolute
-          w-[35rem]
-          h-[35rem]
+          w-[25rem]
+          h-[25rem]
           bg-blue-400
           rounded-full
           blur-3xl
           opacity-10
-          mt-20
-          -ml-40
+          mt-24
+          -ml-10
         "
       />
       <div
