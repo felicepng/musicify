@@ -1,13 +1,13 @@
 <script setup lang="ts">
 const props = defineProps({
   id: String,
-  name: String
-})
+  name: String,
+});
 
 defineExpose({
   id: props.id,
-  name: props.name
-})
+  name: props.name,
+});
 </script>
 
 <template>

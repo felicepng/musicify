@@ -1,20 +1,20 @@
-<script setup lang='ts'>
-import { SearchQuery } from "~~/consts/consts"
+<script setup lang="ts">
+import { SearchQuery } from '~~/consts/consts';
 
-const genre = ref<string>("")
-const artist = ref<string>("")
+const genre = ref<string>('');
+const artist = ref<string>('');
 
 const emit = defineEmits({
   search: (query: SearchQuery) => {
-    return query.genre || query.artist
-  }
-})
+    return query.genre || query.artist;
+  },
+});
 
 defineExpose({
   genre,
   artist,
-  emit
-})
+  emit,
+});
 </script>
 
 <template>
