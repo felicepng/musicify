@@ -23,7 +23,7 @@ defineProps({
   <div
     :class="`${
       isActive ? 'bg-translucentBlue' : 'bg-translucent'
-    } rounded-lg py-3 px-4 sm:py-5 sm:px-6 flex items-center justify-between gap-x-4 sm:gap-x-8`"
+    } z-10 rounded-lg py-3 px-4 sm:py-5 sm:px-6 flex items-center justify-between gap-x-4 sm:gap-x-8`"
   >
     <div class="flex items-center gap-x-5 sm:gap-x-8">
       <a
@@ -45,13 +45,13 @@ defineProps({
           v-show="isActive"
           src="~/assets/music.gif"
           class="absolute w-2/3 h-1/2 z-10"
-          alt="Music gif"
+          alt="Music Gif"
         />
         <div
           v-show="isActive"
           class="absolute bg-black opacity-50 w-full h-full"
         />
-        <img :src="album.image" alt="Album image" class="w-full h-full" />
+        <img :src="album.image" alt="Album Image" class="w-full h-full" />
       </a>
 
       <div class="shrink">

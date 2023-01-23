@@ -57,6 +57,37 @@ defineExpose({
       items-center
     "
   >
+    <div class="absolute w-screen h-full overflow-hidden">
+      <div
+        class="
+          absolute
+          w-[35rem]
+          h-[35rem]
+          bg-blue-400
+          rounded-full
+          blur-3xl
+          opacity-10
+          mt-20
+          -ml-40
+        "
+      />
+      <div
+        class="
+          hidden
+          md:block
+          absolute
+          w-[25rem]
+          h-[25rem]
+          bg-blue-400
+          rounded-full
+          blur-3xl
+          opacity-10
+          mt-80
+          ml-[70rem]
+        "
+      />
+    </div>
+
     <div class="flex w-full">
       <div class="flex items-center gap-x-5">
         <Search @search="onSearch" :options="genreData.genres" />
@@ -70,12 +101,14 @@ defineExpose({
       </div>
     </div>
 
-    <img
-      v-if="pending"
-      src="~/assets/music.gif"
-      class="mt-9 h-10 w-24"
-      alt="Music gif"
-    />
+    <div v-if="pending" class="mt-20 flex flex-col items-center gap-y-4">
+      <p class="text-sm sm:text-base">loading...</p>
+      <img
+        src="~/assets/music.gif"
+        class="h-8 w-20 sm:h-10 sm:w-24"
+        alt="Music Gif"
+      />
+    </div>
     <div v-else-if="data?.error_description">
       error: {{ data.error_description }}
     </div>

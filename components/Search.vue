@@ -13,7 +13,7 @@ defineProps({
 </script>
 
 <template>
-  <div>
+  <div class="z-10">
     <select
       v-model="input"
       class="select focus:outline-none bg-translucent"
