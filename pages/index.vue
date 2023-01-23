@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { SearchResult } from '~~/consts/consts';
+import { ref } from 'vue';
 
-const results = ref<SearchResult[]>([]);
+const query = ref<Record<string, string>>({});
+const url = computed(() => `/api/songRecs?${new URLSearchParams(query.value)}`);
 
-const onSearch = async (query: Record<string, string>) => {
-  Object.keys(query).forEach((key) => {
-    !query[key] && delete query[key];
+const { data, pending, error } = await useFetch(url, { server: false });
+
+const onSearch = async (obj: Record<string, string>) => {
+  Object.keys(obj).forEach((key) => {
+    !obj[key] && delete obj[key];
   });
-
-  const { data, pending } = await useAsyncData('songRecs', () =>
-    $fetch('/api/songRecs', { query })
-  );
-
-  results.value = data.value?.recs || [];
+  query.value = obj;
 };
 
 defineExpose({
-  results,
+  data,
+  pending,
+  error,
   onSearch,
 });
 </script>
@@ -25,7 +25,9 @@ defineExpose({
   <div class="font-poppins flex flex-col">
     <NuxtLink to="/recents">&gt; to recents</NuxtLink>
     <Form @search="onSearch" />
-    <!-- <div v-if="loading" /> -->
-    <Result v-for="result in results" :key="result.id" v-bind="result" />
+    {{ Object.keys(query).length > 0 && pending }}
+    <div v-if="data?.recs?.length">
+      <Result v-for="rec in data.recs" :key="rec.id" v-bind="rec" />
+    </div>
   </div>
 </template>

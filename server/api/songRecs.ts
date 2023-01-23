@@ -26,9 +26,7 @@ export default defineEventHandler(async (event) => {
       recs,
     };
   } catch (e) {
-    return {
-      error: e,
-    };
+    return e.body;
   }
 });
 
