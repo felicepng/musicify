@@ -7,6 +7,7 @@
       bg-primary
       w-full
       p-6
+      lg:px-10
       flex
       justify-between
       items-center
