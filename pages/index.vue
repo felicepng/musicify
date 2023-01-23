@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Artist, SearchResult } from '~~/consts/consts';
+import { SearchResult } from '~~/consts/consts';
 
 const results = ref<SearchResult[]>([]);
 
@@ -8,38 +8,11 @@ const onSearch = async (query: Record<string, string>) => {
     !query[key] && delete query[key];
   });
 
-  const { recs } = await $fetch(`/api/queryTracks`, { query });
+  const { data, pending } = await useAsyncData('songRecs', () =>
+    $fetch('/api/songRecs', { query })
+  );
 
-  if (!recs?.length) {
-    results.value = [];
-    return;
-  }
-
-  const arr: SearchResult[] = recs.map((rec: SpotifyApi.TrackObjectFull) => {
-    const artists: Artist[] = rec.artists.map(
-      (artist: SpotifyApi.ArtistObjectSimplified) => ({
-        id: artist.id,
-        name: artist.name,
-        url: artist.external_urls.spotify,
-      })
-    );
-
-    return {
-      id: rec.id,
-      name: rec.name,
-      url: rec.external_urls.spotify,
-      preview_url: rec.preview_url,
-      album: {
-        name: rec.album.name,
-        url: rec.album.external_urls.spotify,
-        image: rec.album.images[1].url,
-      },
-      artists,
-    };
-  });
-
-  results.value = arr;
-  console.log(arr);
+  results.value = data.value?.recs || [];
 };
 
 defineExpose({
@@ -52,6 +25,7 @@ defineExpose({
   <div class="font-poppins flex flex-col">
     <NuxtLink to="/recents">&gt; to recents</NuxtLink>
     <Form @search="onSearch" />
+    <!-- <div v-if="loading" /> -->
     <Result v-for="result in results" :key="result.id" v-bind="result" />
   </div>
 </template>
