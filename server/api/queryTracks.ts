@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
     const res = await spotifyApi.searchTracks(params, { limit: 5 })
 
     return {
-      tracks: res.body.tracks?.items || []
+      recs: res.body.tracks?.items || []
     }
   } catch (e) {
     return {
