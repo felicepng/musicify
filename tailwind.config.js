@@ -13,6 +13,7 @@ module.exports = {
       colors: {
         primary: '#05050F',
         translucent: 'rgba(51, 53, 59, 0.32)',
+        translucentBlue: 'rgba(191, 219, 254, 0.32)',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
