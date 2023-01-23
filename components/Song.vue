@@ -11,7 +11,7 @@ const onPause = (url) => {
   audio.pause();
 };
 
-const props = defineProps({
+defineProps({
   id: String,
   name: String,
   url: String,

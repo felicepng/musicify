@@ -1,8 +1,3 @@
-export interface SearchQuery {
-  genre: string;
-  artist: string;
-}
-
 export interface Album {
   name: string;
   url: string;

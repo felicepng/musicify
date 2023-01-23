@@ -1,26 +1,27 @@
 <script setup lang="ts">
-import { SearchQuery } from '~~/consts/consts';
+import { options } from '~~/consts/data';
 
-const genre = ref<string>('');
-const artist = ref<string>('');
+const genre = ref<string>('acoustic');
 
 const emit = defineEmits({
-  search: (query: SearchQuery) => {
-    return query.genre || query.artist;
+  search: (gen: string) => {
+    return !!gen;
   },
 });
 
 defineExpose({
+  options,
   genre,
-  artist,
   emit,
 });
 </script>
 
 <template>
-  <form @submit.prevent="emit('search', { genre, artist })">
-    <input v-model="genre" placeholder="Genre..." class="text-black" />
-    <input v-model="artist" placeholder="Artist..." class="text-black" />
-    <button type="submit" class="bg-blue-700">Search</button>
-  </form>
+  <select
+    v-model="genre"
+    class="select select-bordered w-full max-w-xs focus:outline-none"
+    @change="emit('search', genre)"
+  >
+    <option v-for="opt in options" :key="opt">{{ opt }}</option>
+  </select>
 </template>

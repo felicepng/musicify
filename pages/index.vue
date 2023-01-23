@@ -1,18 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const query = ref<Record<string, string>>({});
+const genre = ref<string>('acoustic');
 
 const { data, pending } = await useFetch('/api/songs', {
-  query,
+  query: { genre },
   server: false,
 });
 
-const onSearch = async (obj: Record<string, string>) => {
-  Object.keys(obj).forEach((key) => {
-    !obj[key] && delete obj[key];
-  });
-  query.value = obj;
+const onSearch = async (gen: string) => {
+  genre.value = gen;
 };
 
 defineExpose({
@@ -27,8 +24,7 @@ defineExpose({
     <NuxtLink to="/recents">&gt; to recents</NuxtLink>
     <Search @search="onSearch" />
 
-    <div v-if="Object.keys(query).length === 0" />
-    <div v-else-if="pending">Loading...</div>
+    <div v-if="pending">Loading...</div>
     <div v-else-if="data?.error">Error: {{ data.error.message }}</div>
     <div v-else-if="data?.recs">
       <div v-if="data.recs.length === 0">No song recommendations found</div>
