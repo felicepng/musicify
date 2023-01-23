@@ -6,8 +6,9 @@
       sticky
       bg-primary
       w-full
-      p-6
-      xl:px-10
+      px-6
+      py-5
+      xl:px-10 xl:py-6
       flex
       justify-between
       items-center

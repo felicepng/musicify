@@ -69,7 +69,6 @@ defineProps({
             items-center
             gap-x-2
             font-extralight
-            truncate
           "
         >
           <a

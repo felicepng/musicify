@@ -46,9 +46,9 @@ defineExpose({
       w-screen
       font-poppins
       flex flex-col
-      gap-y-7
+      gap-y-5
       sm:gap-y-9
-      pt-3
+      pt-1
       pb-14
       sm:pt-5 sm:pb-16
       px-6
@@ -60,7 +60,7 @@ defineExpose({
     <div class="flex w-full">
       <div class="flex items-center gap-x-5">
         <Search @search="onSearch" :options="genreData.genres" />
-        <div class="tooltip" data-tip="refresh">
+        <div class="tooltip tooltip-bottom" data-tip="refresh">
           <Icon
             @click="refresh"
             name="ci:refresh-02"
@@ -81,7 +81,7 @@ defineExpose({
     </div>
     <div v-else-if="data?.recs" class="w-full">
       <div v-if="data.recs.length === 0">no song recommendations found</div>
-      <div v-else class="grid xl:grid-cols-2 gap-x-9 gap-y-5 sm:gap-y-7">
+      <div v-else class="grid xl:grid-cols-2 gap-x-9 gap-y-4 sm:gap-y-7">
         <Song
           v-for="rec in data.recs"
           :key="rec.id"
