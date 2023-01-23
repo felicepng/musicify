@@ -13,11 +13,13 @@ defineProps({
 </script>
 
 <template>
-  <select
-    v-model="input"
-    class="select select-bordered w-full max-w-xs focus:outline-none"
-    @change="searchEmit('search', input)"
-  >
-    <option v-for="opt in options" :key="opt">{{ opt }}</option>
-  </select>
+  <div>
+    <select
+      v-model="input"
+      class="select focus:outline-none bg-translucent"
+      @change="searchEmit('search', input)"
+    >
+      <option v-for="opt in options" :key="opt">{{ opt }}</option>
+    </select>
+  </div>
 </template>

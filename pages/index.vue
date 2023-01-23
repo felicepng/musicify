@@ -36,9 +36,11 @@ defineExpose({
 </script>
 
 <template>
-  <div class="font-poppins flex flex-col">
-    <NuxtLink to="/recents">&gt; to recents</NuxtLink>
-    <Search @search="onSearch" :options="genreData.genres" />
+  <div class="font-poppins flex flex-col gap-y-9 pt-8 pb-20 px-10">
+    <div class="flex justify-between items-cemter">
+      <Search @search="onSearch" :options="genreData.genres" />
+      <NuxtLink to="/recents">recents &gt;</NuxtLink>
+    </div>
 
     <div v-if="pending">Loading...</div>
     <div v-else-if="data?.error_description">
@@ -46,13 +48,15 @@ defineExpose({
     </div>
     <div v-else-if="data?.recs">
       <div v-if="data.recs.length === 0">No song recommendations found</div>
-      <Song
-        v-for="rec in data.recs"
-        :key="rec.id"
-        v-bind="rec"
-        @play="onPlay"
-        @pause="onPause"
-      />
+      <div v-else class="grid lg:grid-cols-2 gap-x-10 gap-y-9">
+        <Song
+          v-for="rec in data.recs"
+          :key="rec.id"
+          v-bind="rec"
+          @play="onPlay"
+          @pause="onPause"
+        />
+      </div>
     </div>
     <div v-else>Error occurred retrieving song recommendations</div>
   </div>
