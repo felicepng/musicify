@@ -23,9 +23,9 @@ defineProps({
   <div
     :class="`${
       isActive ? 'bg-translucentBlue' : 'bg-translucent'
-    } rounded-lg py-4 px-5 sm:py-6 sm:px-8 flex items-center justify-between gap-x-6 sm:gap-x-8`"
+    } rounded-lg py-3 px-4 sm:py-5 sm:px-6 flex items-center justify-between gap-x-4 sm:gap-x-8`"
   >
-    <div class="flex items-center gap-x-6 sm:gap-x-8">
+    <div class="flex items-center gap-x-5 sm:gap-x-8">
       <a
         :href="album.url"
         target="_blank"
@@ -58,15 +58,14 @@ defineProps({
         <a
           :href="url"
           target="_blank"
-          class="flex-wrap text-base sm:text-lg font-medium hover:text-blue-200"
+          class="flex-wrap text-sm sm:text-base font-medium hover:text-blue-200"
         >
           {{ name }}
         </a>
         <div
           class="
             flex flex-wrap
-            text-sm
-            sm:text-base
+            text-[0.92rem]
             items-center
             gap-x-2
             font-extralight
@@ -84,28 +83,18 @@ defineProps({
             }}{{ artist.name !== artists[artists.length - 1].name ? ',' : '' }}
           </a>
         </div>
-        <p
-          class="
-            flex-wrap
-            mt-2
-            text-xs
-            sm:text-sm
-            uppercase
-            font-extralight
-            opacity-70
-          "
-        >
+        <p class="flex-wrap mt-2 text-xs uppercase font-extralight opacity-70">
           {{ album.name }}
         </p>
       </div>
     </div>
 
-    <div v-if="!preview_url" class="tooltip" data-tip="no preview">
+    <button v-if="!preview_url" class="tooltip" data-tip="no preview">
       <Icon
         name="material-symbols:play-arrow"
         class="w-7 h-7 md:w-8 md:h-8 opacity-20 cursor-not-allowed"
       />
-    </div>
+    </button>
     <button v-else-if="!isActive" @click="songEmit('play', preview_url)">
       <Icon
         name="material-symbols:play-arrow"

@@ -43,20 +43,22 @@ defineExpose({
 <template>
   <div
     class="
+      w-screen
       font-poppins
       flex flex-col
       gap-y-7
       sm:gap-y-9
-      pt-5
+      pt-3
       pb-14
-      sm:pt-8 sm:pb-20
+      sm:pt-5 sm:pb-16
       px-6
-      lg:px-20
+      xl:px-32
+      2xl:px-56
       items-center
     "
   >
-    <div class="flex justify-between items-center w-full">
-      <div class="flex items-center gap-x-4 sm:gap-x-5">
+    <div class="flex w-full">
+      <div class="flex items-center gap-x-5">
         <Search @search="onSearch" :options="genreData.genres" />
         <div class="tooltip" data-tip="refresh">
           <Icon
@@ -66,21 +68,20 @@ defineExpose({
           />
         </div>
       </div>
-      <NuxtLink to="/recents">recents &gt;</NuxtLink>
     </div>
 
     <img
       v-if="pending"
       src="~/assets/music.gif"
-      class="mt-10 h-10 w-24"
+      class="mt-9 h-10 w-24"
       alt="Music gif"
     />
     <div v-else-if="data?.error_description">
       error: {{ data.error_description }}
     </div>
-    <div v-else-if="data?.recs">
+    <div v-else-if="data?.recs" class="w-full">
       <div v-if="data.recs.length === 0">no song recommendations found</div>
-      <div v-else class="grid lg:grid-cols-2 gap-x-10 gap-y-7 sm:gap-y-9">
+      <div v-else class="grid xl:grid-cols-2 gap-x-9 gap-y-5 sm:gap-y-7">
         <Song
           v-for="rec in data.recs"
           :key="rec.id"

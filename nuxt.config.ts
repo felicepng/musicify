@@ -4,9 +4,13 @@ export default defineNuxtConfig({
     head: {
       title: 'musicify',
       meta: [
-        { name: 'description', content: 'An application for generating song recommendations from genres and artists.' }
+        {
+          name: 'description',
+          content:
+            'An application that generates and previews song recommendations from genres, using Nuxt.js and Spotify API.',
+        },
       ],
-    }
+    },
   },
   css: ['~/assets/css/main.css'],
   postcss: {
@@ -19,5 +23,5 @@ export default defineNuxtConfig({
     clientId: '',
     clientSecret: '',
   },
-  modules: ['nuxt-icon']
-})
+  modules: ['nuxt-icon'],
+});

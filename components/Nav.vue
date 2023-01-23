@@ -7,7 +7,7 @@
       bg-primary
       w-full
       p-6
-      lg:px-10
+      xl:px-10
       flex
       justify-between
       items-center
@@ -17,7 +17,7 @@
       to="/"
       class="
         font-semibold
-        text-xl
+        text-[1.19rem]
         sm:text-2xl
         flex
         gap-x-2
