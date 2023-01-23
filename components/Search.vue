@@ -1,26 +1,27 @@
 <script setup lang="ts">
-import { options } from '~~/consts/data';
-
-const genre = ref<string>('acoustic');
+const input = ref<string>('acoustic');
 
 const emit = defineEmits({
-  search: (gen: string) => {
-    return !!gen;
+  search: (genre: string) => {
+    return !!genre;
   },
 });
 
 defineExpose({
-  options,
-  genre,
+  input,
   emit,
+});
+
+defineProps({
+  options: Array,
 });
 </script>
 
 <template>
   <select
-    v-model="genre"
+    v-model="input"
     class="select select-bordered w-full max-w-xs focus:outline-none"
-    @change="emit('search', genre)"
+    @change="emit('search', input)"
   >
     <option v-for="opt in options" :key="opt">{{ opt }}</option>
   </select>
