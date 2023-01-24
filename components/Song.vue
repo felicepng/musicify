@@ -22,7 +22,7 @@ defineProps({
 <template>
   <div
     :class="`${
-      isActive ? 'bg-translucentBlue' : 'bg-translucent'
+      isActive ? 'bg-translucent_blue' : 'bg-translucent'
     } z-10 rounded-lg py-3 px-4 sm:py-5 sm:px-6 flex items-center justify-between gap-x-4 sm:gap-x-8`"
   >
     <div class="flex items-center gap-x-5 sm:gap-x-8">

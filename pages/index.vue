@@ -18,15 +18,19 @@ const onSearch = (input: string) => {
 const onPlay = (url: string) => {
   audio?.pause();
   audio = document.querySelector(`[src="${url}"]`);
+  if (!audio) return;
+
   activeUrl.value = url;
-  audio?.play();
-  audio?.addEventListener('ended', () => onPause(url));
+  audio.play();
+  audio.addEventListener('ended', () => onPause(url));
 };
 
 const onPause = (url: string) => {
   audio = document.querySelector(`[src="${url}"]`);
+  if (!audio) return;
+
   activeUrl.value = '';
-  audio?.pause();
+  audio.pause();
 };
 
 defineExpose({
@@ -41,8 +45,8 @@ defineExpose({
 </script>
 
 <template>
-  <div class="w-screen font-poppins flex flex-col gap-y-5 sm:gap-y-9 pt-1 pb-14 sm:pt-5 sm:pb-16 px-6 xl:px-32 2xl:px-56 items-center">
-    <div class="absolute bg-primary w-screen h-full overflow-hidden">
+  <div class="w-full flex flex-col gap-y-5 sm:gap-y-9 pt-1 pb-14 sm:pt-5 sm:pb-16 px-6 xl:px-32 2xl:px-56 items-center">
+    <div class="absolute bg-primary w-full h-full overflow-hidden">
       <div class="absolute w-[25rem] h-[25rem] bg-blue-400 rounded-full blur-3xl opacity-10 mt-24 -ml-10" />
       <div class="hidden md:block absolute w-[25rem] h-[25rem] bg-blue-400 rounded-full blur-3xl opacity-10 mt-80 ml-[70rem]" />
     </div>
