@@ -1,5 +1,5 @@
 <template>
-  <nav class="z-20 top-0 sticky bg-primary w-full px-6 py-5 xl:px-10 xl:py-6 flex justify-between items-center">
+  <nav class="z-20 top-0 sticky bg-primary w-full px-6 xl:px-32 2xl:px-56 py-5 xl:py-6 flex justify-between items-center">
     <div class="font-medium text-lg sm:text-[1.38rem] flex gap-x-2 sm:gap-x-3 items-center">
       <Icon
         name="material-symbols:sound-sensing"

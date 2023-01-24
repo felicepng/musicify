@@ -1,10 +1,12 @@
 # musicify
 
+![](https://github.com/felicepng/musicify/blob/main/demo.gif)
+
 An application for generating song recommendations from various genres, built with [Nuxt 3](https://nuxt.com) and [Spotify API](https://developer.spotify.com/documentation/web-api/).
 
 ## Set-up
 
-Create a `.env` file in the root directory and add the following credentials:
+Create a `.env` file in the root directory and add the following credentials for your Spotify application:
 
 ```bash
 # .env
