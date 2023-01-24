@@ -1,30 +1,8 @@
 <template>
-  <nav
-    class="
-      z-20
-      top-0
-      sticky
-      bg-primary
-      w-full
-      px-6
-      py-5
-      xl:px-10 xl:py-6
-      flex
-      justify-between
-      items-center
-    "
-  >
+  <nav class="z-20 top-0 sticky bg-primary w-full px-6 py-5 xl:px-10 xl:py-6 flex justify-between items-center">
     <NuxtLink
       to="/"
-      class="
-        font-semibold
-        text-[1.19rem]
-        sm:text-2xl
-        flex
-        gap-x-2
-        sm:gap-x-3
-        items-center
-      "
+      class="font-semibold text-[1.19rem] sm:text-2xl flex gap-x-2 sm:gap-x-3 items-center"
     >
       <Icon
         name="material-symbols:sound-sensing"

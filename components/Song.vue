@@ -29,17 +29,7 @@ defineProps({
       <a
         :href="album.url"
         target="_blank"
-        class="
-          relative
-          flex
-          justify-center
-          items-center
-          w-16
-          h-16
-          sm:w-24 sm:h-24
-          shrink-0
-          rounded-sm
-        "
+        class="relative flex justify-center items-center w-16 h-16 sm:w-24 sm:h-24 shrink-0 rounded-sm"
       >
         <img
           v-show="isActive"
@@ -62,15 +52,7 @@ defineProps({
         >
           {{ name }}
         </a>
-        <div
-          class="
-            flex flex-wrap
-            text-[0.92rem]
-            items-center
-            gap-x-2
-            font-extralight
-          "
-        >
+        <div class="flex flex-wrap text-[0.92rem] items-center gap-x-2 font-extralight">
           <a
             v-for="artist in artists"
             :key="artist.id"
@@ -88,7 +70,12 @@ defineProps({
       </div>
     </div>
 
-    <button v-if="!preview_url" class="tooltip" data-tip="no preview">
+    <button
+      v-if="!preview_url"
+      class="tooltip"
+      data-tip="no preview"
+      aria-label="no preview"
+    >
       <Icon
         name="material-symbols:play-arrow"
         class="w-7 h-7 md:w-8 md:h-8 opacity-20 cursor-not-allowed"
@@ -99,6 +86,7 @@ defineProps({
       @click="songEmit('play', preview_url)"
       class="tooltip"
       data-tip="play"
+      aria-label="play"
     >
       <Icon
         name="material-symbols:play-arrow"
@@ -110,6 +98,7 @@ defineProps({
       @click="songEmit('pause', preview_url)"
       class="tooltip"
       data-tip="pause"
+      aria-label="pause"
     >
       <Icon
         name="material-symbols:pause-outline"

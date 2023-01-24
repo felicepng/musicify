@@ -19,7 +19,9 @@ defineProps({
       class="select focus:outline-none bg-translucent"
       @change="searchEmit('search', input)"
     >
-      <option v-for="opt in options" :key="opt">{{ opt }}</option>
+      <option v-for="opt in options" :key="opt">
+        {{ opt }}
+      </option>
     </select>
   </div>
 </template>

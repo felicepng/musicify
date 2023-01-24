@@ -3,6 +3,9 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'musicify',
+      htmlAttrs: {
+        lang: 'en'
+      },
       meta: [
         {
           name: 'description',
